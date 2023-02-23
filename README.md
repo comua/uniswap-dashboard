@@ -1,6 +1,6 @@
 <p align="center">
   <h1 align="center">
-    <a href="https://uniswap-dashboard.vercel.app">
+    <a target="_blank" href="https://uniswap-dashboard.vercel.app">
       Uniswap Dashboard
     </a>
   </h1>
