@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 
-import { COMPACT_NUMBER_FORMATTER, PAGE_SIZE } from '../../lib/constants'
+import { COMPACT_NUMBER_FORMATTER } from '../../lib/constants'
 import { formatTime } from '../../lib/helpers'
 import { Transaction } from '../../lib/types'
 import { Cell } from '../table/Cell'
