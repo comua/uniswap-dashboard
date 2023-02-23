@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler, useEffect, useState } from 'react'
+import React, { FC, MouseEventHandler, useEffect, useRef, useState } from 'react'
 import { GoSync } from 'react-icons/go'
 
 import { formatTime } from '../lib/helpers'
@@ -12,13 +12,26 @@ const SYNCED_VALUE = 'Synced'
 
 export const SyncButton: FC<ISyncButtonProps> = ({ onClick, dataUpdatedAt }) => {
   const [formattedSyncTime, setFormattedSyncTime] = useState(SYNCED_VALUE)
+  const intervalRef = useRef<null | NodeJS.Timeout>(null)
 
   useEffect(() => {
-    setInterval(
+    return () => {
+      clearInterval(intervalRef.current)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
+
+    setFormattedSyncTime(SYNCED_VALUE)
+
+    intervalRef.current = setInterval(
       () => setFormattedSyncTime(`Synced ${formatTime(`${dataUpdatedAt / 1000}`)}`),
       60000
     )
-  }, [])
+  }, [dataUpdatedAt])
 
   return (
     <button className="refresh-button flex items-center" onClick={onClick}>
