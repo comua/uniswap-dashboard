@@ -4,7 +4,7 @@ export const capitalize = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-export const formatTime = (unix: string) => {
+export const formatTime = (unix: string, inSecondsLabel?: string) => {
   const now = dayjs()
   const timestamp = dayjs.unix(parseInt(unix))
 
@@ -12,6 +12,10 @@ export const formatTime = (unix: string) => {
   const inMinutes = now.diff(timestamp, 'minute')
   const inHours = now.diff(timestamp, 'hour')
   const inDays = now.diff(timestamp, 'day')
+
+  if (inMinutes < 1 && inSecondsLabel) {
+    return inSecondsLabel
+  }
 
   if (inHours >= 24) {
     return `${inDays} ${inDays === 1 ? 'day' : 'days'} ago`
