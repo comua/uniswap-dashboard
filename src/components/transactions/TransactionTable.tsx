@@ -22,7 +22,7 @@ const TRANSACTION_HEADERS = [
 export const TransactionTable: FC = () => {
   const [page, setPage] = useState<number>(0)
 
-  const { data, refetch, isLoading, isError, isFetching } = useTransactions({
+  const { data, refetch, dataUpdatedAt, isLoading, isError, isFetching } = useTransactions({
     size: QUERY_SIZE,
   })
 
@@ -34,7 +34,7 @@ export const TransactionTable: FC = () => {
 
   return (
     <Container>
-      <Title {...{ title: 'Most Recent Transactions', onRefetch: () => refetch() }} />
+      <Title {...{ title: 'Recent Transactions', onRefetch: () => refetch(), dataUpdatedAt }} />
       <Table
         {...{
           page,

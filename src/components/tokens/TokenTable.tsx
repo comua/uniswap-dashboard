@@ -15,7 +15,7 @@ const TOKEN_HEADERS = ['Token', 'Price', 'Price Change', 'TVL ↓']
 export const TokenTable: FC = () => {
   const [page, setPage] = useState<number>(0)
 
-  const { data, refetch, isLoading, isError, isFetching } = useTokens({
+  const { data, refetch, dataUpdatedAt, isLoading, isError, isFetching } = useTokens({
     size: QUERY_SIZE,
   })
 
@@ -27,7 +27,7 @@ export const TokenTable: FC = () => {
 
   return (
     <Container>
-      <Title {...{ title: 'Top Tokens', onRefetch: () => refetch() }} />
+      <Title {...{ title: 'Top Tokens', onRefetch: () => refetch(), dataUpdatedAt }} />
       <Table {...{ page, setPage, lastPage: Math.ceil(data?.length / PAGE_SIZE) }}>
         <Row isHeader className={rowClass}>
           <Cell>#</Cell>

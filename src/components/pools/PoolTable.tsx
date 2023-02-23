@@ -15,7 +15,7 @@ const POOL_HEADERS = ['Pool', 'TVL ↓', 'Volume 24H']
 export const PoolTable: FC = () => {
   const [page, setPage] = useState<number>(0)
 
-  const { data, refetch, isLoading, isError, isFetching } = usePools({
+  const { data, refetch, dataUpdatedAt, isLoading, isError, isFetching } = usePools({
     size: QUERY_SIZE,
   })
 
@@ -27,7 +27,7 @@ export const PoolTable: FC = () => {
 
   return (
     <Container>
-      <Title {...{ title: 'Top Pools', onRefetch: () => refetch() }} />
+      <Title {...{ title: 'Top Pools', onRefetch: () => refetch(), dataUpdatedAt }} />
       <Table {...{ page, setPage, lastPage: Math.ceil(data?.length / PAGE_SIZE) }}>
         <Row isHeader className={rowClass}>
           <Cell>#</Cell>
