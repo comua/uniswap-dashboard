@@ -22,14 +22,14 @@ const TRANSACTION_HEADERS = [
 export const TransactionTable: FC = () => {
   const [page, setPage] = useState<number>(0)
 
-  const { data, error, refetch, isLoading, isError, isFetching } = useTransactions({
+  const { data, refetch, isLoading, isError, isFetching } = useTransactions({
     size: QUERY_SIZE,
   })
 
   const rowClass = 'transaction-grid'
 
   if (isError) {
-    return <div>Error: {error.message}</div>
+    return <div>Error: Failed to fetch Transactions.</div>
   }
 
   return (

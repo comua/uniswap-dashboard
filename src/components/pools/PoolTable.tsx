@@ -15,7 +15,7 @@ const POOL_HEADERS = ['Pool', 'TVL ↓', 'Volume 24H']
 export const PoolTable: FC = () => {
   const [page, setPage] = useState<number>(0)
 
-  const { data, error, refetch, isLoading, isError, isFetching } = usePools({
+  const { data, refetch, isLoading, isError, isFetching } = usePools({
     page,
     size: PAGE_SIZE,
   })
@@ -23,7 +23,7 @@ export const PoolTable: FC = () => {
   const rowClass = 'pool-grid'
 
   if (isError) {
-    return <div>Error: {error.message}</div>
+    return <div>Error: Failed to fetch pools.</div>
   }
 
   return (

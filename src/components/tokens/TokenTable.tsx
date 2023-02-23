@@ -15,7 +15,7 @@ const TOKEN_HEADERS = ['Token', 'Price', 'Price Change', 'TVL ↓']
 export const TokenTable: FC = () => {
   const [page, setPage] = useState<number>(0)
 
-  const { data, error, refetch, isLoading, isError, isFetching } = useTokens({
+  const { data, refetch, isLoading, isError, isFetching } = useTokens({
     page,
     size: PAGE_SIZE,
   })
@@ -23,7 +23,7 @@ export const TokenTable: FC = () => {
   const rowClass = 'token-grid'
 
   if (isError) {
-    return <div>Error: {error.message}</div>
+    return <div>Error: Failed to fetch tokens.</div>
   }
 
   return (
