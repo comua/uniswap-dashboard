@@ -34,7 +34,7 @@ export const TransactionTable: FC = () => {
 
   return (
     <Container>
-      <Title {...{ title: 'Transactions', onRefetch: () => refetch() }} />
+      <Title {...{ title: 'Most Recent Transactions', onRefetch: () => refetch() }} />
       <Table
         {...{
           page,

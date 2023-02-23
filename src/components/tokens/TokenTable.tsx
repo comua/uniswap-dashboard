@@ -27,7 +27,7 @@ export const TokenTable: FC = () => {
 
   return (
     <Container>
-      <Title {...{ title: 'Tokens', onRefetch: () => refetch() }} />
+      <Title {...{ title: 'Top Tokens', onRefetch: () => refetch() }} />
       <Table {...{ page, setPage, lastPage: Math.ceil(data?.length / PAGE_SIZE) }}>
         <Row isHeader className={rowClass}>
           <Cell>#</Cell>

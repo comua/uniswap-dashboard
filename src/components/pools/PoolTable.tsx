@@ -27,7 +27,7 @@ export const PoolTable: FC = () => {
 
   return (
     <Container>
-      <Title {...{ title: 'Pools', onRefetch: () => refetch() }} />
+      <Title {...{ title: 'Top Pools', onRefetch: () => refetch() }} />
       <Table {...{ page, setPage, lastPage: Math.ceil(data?.length / PAGE_SIZE) }}>
         <Row isHeader className={rowClass}>
           <Cell>#</Cell>

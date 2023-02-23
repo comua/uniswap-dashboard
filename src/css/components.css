@@ -15,7 +15,7 @@
     }
 
     @media screen(mobile) {
-      grid-template-columns: 2rem 3fr repeat(2, 1fr);
+      grid-template-columns: 2rem 3.5fr repeat(2, 1fr);
 
       & :nth-child(4) {
         display: flex;
@@ -29,28 +29,20 @@
     align-items: center;
     grid-template-columns: 2rem 3fr repeat(1, 1fr);
 
-    & :nth-child(4) {
+    & :nth-child(3) {
       display: none;
     }
-    & :nth-child(5) {
+    & :nth-child(4) {
       display: none;
     }
 
     @media screen(mobile) {
-      grid-template-columns: 2rem 3fr repeat(2, 1fr);
-
-      & :nth-child(4) {
-        display: flex;
-      }
-    }
-
-    @media screen(tablet) {
       grid-template-columns: 2rem 3fr repeat(3, 1fr);
 
-      & :nth-child(4) {
+      & :nth-child(3) {
         display: flex;
       }
-      & :nth-child(5) {
+      & :nth-child(4) {
         display: flex;
       }
     }
@@ -76,15 +68,18 @@
     }
 
     @media screen(mobile) {
-      grid-template-columns: 2fr repeat(2, 1fr);
+      grid-template-columns: 1.5fr repeat(3, 1fr);
 
       & :nth-child(2) {
+        display: flex;
+      }
+      & :nth-child(5) {
         display: flex;
       }
     }
 
     @media screen(tablet) {
-      grid-template-columns: 2fr repeat(5, 1fr);
+      grid-template-columns: 1.5fr repeat(5, 1fr);
 
       & :nth-child(2) {
         display: flex;
