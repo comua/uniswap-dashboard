@@ -23,7 +23,7 @@ export const TokenTable: FC = () => {
   const rowClass = 'token-grid'
 
   if (isError) {
-    return <div>Error: Failed to fetch tokens.</div>
+    return <div>Error: Failed to fetch</div>
   }
 
   return (

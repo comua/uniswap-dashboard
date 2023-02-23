@@ -40,7 +40,10 @@ export const TokenRowData: FC<ITokenRowDataProps> = ({ token, index, page }) => 
             />
           </span>
           <span>
-            <span>{token.name}</span> <span className="text-zinc-500">({token.symbol})</span>
+            <span className="tablet:hidden">{token.symbol}</span>
+            <span className="hidden tablet:block">
+              <span>{token.name}</span> <span className="text-zinc-500">({token.symbol})</span>
+            </span>
           </span>
         </span>
       </Cell>

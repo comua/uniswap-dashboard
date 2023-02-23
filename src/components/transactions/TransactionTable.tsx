@@ -40,11 +40,9 @@ export const TransactionTable: FC = () => {
           page,
           setPage,
           lastPage: Math.ceil(data?.length / PAGE_SIZE),
-          headers: TRANSACTION_HEADERS,
         }}
       >
         <Row isHeader className={rowClass}>
-          <Cell>#</Cell>
           {TRANSACTION_HEADERS.map((header, index) => (
             <Cell key={header} end={index !== 0}>
               {header}
@@ -60,7 +58,7 @@ export const TransactionTable: FC = () => {
               </Row>
             ))
           : Array(PAGE_SIZE).fill(
-              <SkeletonRow {...{ amount: TRANSACTION_HEADERS.length + 1, rowClass }} />
+              <SkeletonRow {...{ amount: TRANSACTION_HEADERS.length, rowClass }} />
             )}
       </Table>
     </Container>

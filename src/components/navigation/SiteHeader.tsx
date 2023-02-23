@@ -1,8 +1,7 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
-
-import { NoScrollLink } from './NoScrollLink'
 
 const NAV_MAP = [
   { label: 'Pools', path: '/' },
@@ -26,9 +25,9 @@ export const SiteHeader: FC = () => {
     bg-zinc-900 py-16 px-24 text-14 transition-colors duration-1000 ease-in-out-expo"
     >
       <div className="">
-        <NoScrollLink href="/">
+        <Link href="/">
           Uniswap<span className="hidden tablet:inline"> Dashboard</span>
-        </NoScrollLink>
+        </Link>
       </div>
       <div className="">
         <nav>
@@ -36,9 +35,9 @@ export const SiteHeader: FC = () => {
             {NAV_MAP.map((navItem) => {
               return (
                 <li key={navItem.path} className={getClasses(navItem.path)}>
-                  <NoScrollLink href={navItem.path} shallow>
+                  <Link href={navItem.path} shallow>
                     {navItem.label}
-                  </NoScrollLink>
+                  </Link>
                 </li>
               )
             })}

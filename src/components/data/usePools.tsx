@@ -28,7 +28,7 @@ const poolsQuery = gql`
   }
 `
 
-export const queryPools = async ({ page, size }: { page: number; size: number }) => {
+export const queryPools = async ({ page = 0, size }: { page: number; size: number }) => {
   const response = await request(
     'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
     poolsQuery,
@@ -54,7 +54,7 @@ export const queryPools = async ({ page, size }: { page: number; size: number })
   })
 }
 
-export const usePools = ({ page = 0, size = 10 }: { page: number; size: number }) => {
+export const usePools = ({ page = 0, size = 10 }: { page?: number; size: number }) => {
   const pools = useQuery({
     queryKey: ['pools', page],
     queryFn: () => queryPools({ page, size }),

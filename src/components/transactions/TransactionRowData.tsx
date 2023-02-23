@@ -22,7 +22,6 @@ export const TransactionRowData: FC<ITransactionRowDataProps> = ({ transaction, 
 
   return (
     <>
-      <Cell>{index + 1 + page * PAGE_SIZE}</Cell>
       <Cell>
         <a
           target="_blank"

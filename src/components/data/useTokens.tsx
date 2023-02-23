@@ -20,7 +20,7 @@ const tokensQuery = gql`
   }
 `
 
-export const queryTokens = async ({ page, size }) => {
+export const queryTokens = async ({ page = 0, size }: { page?: number; size: number }) => {
   const response = await request(
     'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
     tokensQuery,
@@ -35,7 +35,9 @@ export const queryTokens = async ({ page, size }) => {
     const todayPrice = token.tokenDayData[0].priceUSD
     const yesterdayPrice = token.tokenDayData[1].priceUSD
 
-    const percentChange = ((todayPrice - yesterdayPrice) / yesterdayPrice) * 100
+    const percentChange = parseInt(yesterdayPrice)
+      ? ((todayPrice - yesterdayPrice) / yesterdayPrice) * 100
+      : 0
 
     return {
       ...token,
@@ -44,7 +46,7 @@ export const queryTokens = async ({ page, size }) => {
   })
 }
 
-export const useTokens = ({ page = 0, size = PAGE_SIZE }) => {
+export const useTokens = ({ page = 0, size = PAGE_SIZE }: { page?: number; size: number }) => {
   const tokens = useQuery({
     queryKey: ['tokens', page],
     queryFn: () => queryTokens({ page, size }),

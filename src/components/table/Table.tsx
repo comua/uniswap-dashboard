@@ -13,14 +13,16 @@ export const Table: FC<PropsWithChildren<ITableProps>> = ({
   children,
 }) => {
   return (
-    <div className="flex w-full flex-col items-center justify-center rounded bg-zinc-900 p-24">
+    <div className="flex w-full flex-col items-center justify-center rounded bg-zinc-900 p-16 tablet:p-24">
       <ul className="flex w-full flex-col items-center justify-center">{children}</ul>
-      <div className="mt-24 flex w-[16rem] justify-between tablet:w-[24rem]">
-        <button
-          disabled={page === 0}
-          onClick={() => setPage(0)}
-          className="disabled:text-zinc-700"
-        >{`<<`}</button>
+      <div className="mt-16 flex w-full justify-between tablet:mt-24 tablet:w-[24rem]">
+        {lastPage && (
+          <button
+            disabled={page === 0}
+            onClick={() => setPage(0)}
+            className="disabled:text-zinc-700"
+          >{`<<`}</button>
+        )}
         <button
           disabled={page === 0}
           onClick={() => setPage(Math.max(page - 1, 0))}

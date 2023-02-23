@@ -60,8 +60,11 @@
     display: grid;
     grid-gap: 1em;
     align-items: center;
-    grid-template-columns: 2rem 3fr repeat(1, 1fr);
+    grid-template-columns: 1.5fr 1fr;
 
+    & :nth-child(2) {
+      display: none;
+    }
     & :nth-child(3) {
       display: none;
     }
@@ -71,28 +74,28 @@
     & :nth-child(5) {
       display: none;
     }
-    & :nth-child(6) {
-      display: none;
-    }
 
     @media screen(mobile) {
-      grid-template-columns: 2rem 3fr repeat(2, 1fr);
+      grid-template-columns: 2fr repeat(2, 1fr);
 
-      & :nth-child(3) {
+      & :nth-child(2) {
         display: flex;
       }
     }
 
     @media screen(tablet) {
-      grid-template-columns: 2rem 3fr repeat(5, 1fr);
+      grid-template-columns: 2fr repeat(5, 1fr);
 
+      & :nth-child(2) {
+        display: flex;
+      }
+      & :nth-child(3) {
+        display: flex;
+      }
       & :nth-child(4) {
         display: flex;
       }
       & :nth-child(5) {
-        display: flex;
-      }
-      & :nth-child(6) {
         display: flex;
       }
     }

@@ -84,7 +84,7 @@ const getTransactionData = ({ transaction, transactionType }) => {
   }
 }
 
-export const queryTransactions = async ({ page, size }) => {
+export const queryTransactions = async ({ page = 0, size }: { page?: number; size: number }) => {
   const response = await request(
     'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
     transactionsQuery,
@@ -119,7 +119,13 @@ export const queryTransactions = async ({ page, size }) => {
   return transactionData
 }
 
-export const useTransactions = ({ page = 0, size = PAGE_SIZE }) => {
+export const useTransactions = ({
+  page = 0,
+  size = PAGE_SIZE,
+}: {
+  page?: number
+  size: number
+}) => {
   const tokens = useQuery({
     queryKey: ['transactions', page],
     queryFn: () => queryTransactions({ page, size }),
