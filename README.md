@@ -1,9 +1,9 @@
 <p align="center">
-  <a href="https://uniswap-dashboard.vercel.app">
-    <h1 align="center">
+  <h1 align="center">
+    <a href="https://uniswap-dashboard.vercel.app">
       Uniswap Dashboard
-    </h1>
-  </a>
+    </a>
+  </h1>
 </p>
 
 ## 🚀 Quick start
