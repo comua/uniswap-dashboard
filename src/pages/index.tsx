@@ -5,7 +5,7 @@ import { FC } from 'react'
 import { PageTransition } from '../components/animation/PageTransition'
 import { queryPools } from '../components/data/usePools'
 import { PoolTable } from '../components/pools/PoolTable'
-import { PAGE_SIZE } from '../lib/constants'
+import { QUERY_SIZE } from '../lib/constants'
 
 const Home: FC = () => {
   const title = 'Pools'
@@ -27,7 +27,7 @@ export async function getStaticProps() {
 
   await queryClient.prefetchQuery({
     queryKey: ['pools', page],
-    queryFn: () => queryPools({ page, size: PAGE_SIZE }),
+    queryFn: () => queryPools({ page, size: QUERY_SIZE }),
   })
 
   return {

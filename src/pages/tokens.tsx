@@ -5,7 +5,7 @@ import { FC } from 'react'
 import { PageTransition } from '../components/animation/PageTransition'
 import { queryTokens } from '../components/data/useTokens'
 import { TokenTable } from '../components/tokens/TokenTable'
-import { PAGE_SIZE } from '../lib/constants'
+import { QUERY_SIZE } from '../lib/constants'
 
 const Tokens: FC = () => {
   const title = 'Tokens'
@@ -27,7 +27,7 @@ export async function getStaticProps() {
 
   await queryClient.prefetchQuery({
     queryKey: ['tokens', page],
-    queryFn: () => queryTokens({ page, size: PAGE_SIZE }),
+    queryFn: () => queryTokens({ size: QUERY_SIZE }),
   })
 
   return {

@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import request, { gql } from 'graphql-request'
 
+import { HIDDEN_POOLS } from '../../lib/constants'
+
 const poolsQuery = gql`
   query getPools($orderBy: String!, $first: Int, $cursor: Int) {
     pools(orderBy: $orderBy, orderDirection: desc, first: $first, skip: $cursor) {
@@ -61,5 +63,7 @@ export const usePools = ({ page = 0, size = 10 }: { page?: number; size: number 
     keepPreviousData: true,
   })
 
-  return pools
+  const filteredData = pools.data?.filter((pool) => !HIDDEN_POOLS.includes(pool.id))
+
+  return { ...pools, data: filteredData }
 }

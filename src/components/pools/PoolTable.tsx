@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 
-import { PAGE_SIZE } from '../../lib/constants'
+import { PAGE_SIZE, QUERY_SIZE } from '../../lib/constants'
 import { usePools } from '../data/usePools'
 import { Cell } from '../table/Cell'
 import { Container } from '../table/Container'
@@ -16,8 +16,7 @@ export const PoolTable: FC = () => {
   const [page, setPage] = useState<number>(0)
 
   const { data, refetch, isLoading, isError, isFetching } = usePools({
-    page,
-    size: PAGE_SIZE,
+    size: QUERY_SIZE,
   })
 
   const rowClass = 'pool-grid'
@@ -29,7 +28,7 @@ export const PoolTable: FC = () => {
   return (
     <Container>
       <Title {...{ title: 'Pools', onRefetch: () => refetch() }} />
-      <Table {...{ page, setPage }}>
+      <Table {...{ page, setPage, lastPage: Math.ceil(data?.length / PAGE_SIZE) }}>
         <Row isHeader className={rowClass}>
           <Cell>#</Cell>
           {POOL_HEADERS.map((header, index) => (
@@ -39,7 +38,7 @@ export const PoolTable: FC = () => {
           ))}
         </Row>
         {!isLoading && !isFetching
-          ? data?.map((pool, index) => (
+          ? data?.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE).map((pool, index) => (
               <Row key={pool.id} className={rowClass}>
                 <PoolRowData {...{ pool, index, page }} />
               </Row>

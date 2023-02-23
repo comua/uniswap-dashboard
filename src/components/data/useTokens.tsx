@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import request, { gql } from 'graphql-request'
 
-import { PAGE_SIZE } from '../../lib/constants'
+import { HIDDEN_TOKENS, PAGE_SIZE } from '../../lib/constants'
 
 const tokensQuery = gql`
   query getTokens($orderBy: String!, $first: Int, $cursor: Int) {
@@ -53,5 +53,7 @@ export const useTokens = ({ page = 0, size = PAGE_SIZE }: { page?: number; size:
     keepPreviousData: true,
   })
 
-  return tokens
+  const filteredData = tokens.data?.filter((token) => !HIDDEN_TOKENS.includes(token.id))
+
+  return { ...tokens, data: filteredData }
 }

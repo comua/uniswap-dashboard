@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 
-import { PAGE_SIZE } from '../../lib/constants'
+import { PAGE_SIZE, QUERY_SIZE } from '../../lib/constants'
 import { useTokens } from '../data/useTokens'
 import { Cell } from '../table/Cell'
 import { Container } from '../table/Container'
@@ -16,20 +16,19 @@ export const TokenTable: FC = () => {
   const [page, setPage] = useState<number>(0)
 
   const { data, refetch, isLoading, isError, isFetching } = useTokens({
-    page,
-    size: PAGE_SIZE,
+    size: QUERY_SIZE,
   })
 
   const rowClass = 'token-grid'
 
   if (isError) {
-    return <div>Error: Failed to fetch</div>
+    return <div>Error: Failed to fetch tokens.</div>
   }
 
   return (
     <Container>
       <Title {...{ title: 'Tokens', onRefetch: () => refetch() }} />
-      <Table {...{ page, setPage, headers: TOKEN_HEADERS }}>
+      <Table {...{ page, setPage, lastPage: Math.ceil(data?.length / PAGE_SIZE) }}>
         <Row isHeader className={rowClass}>
           <Cell>#</Cell>
           {TOKEN_HEADERS.map((header, index) => (
@@ -39,7 +38,7 @@ export const TokenTable: FC = () => {
           ))}
         </Row>
         {!isLoading && !isFetching
-          ? data?.map((token, index) => (
+          ? data?.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE).map((token, index) => (
               <Row key={token.id} className={rowClass}>
                 <TokenRowData {...{ token, headers: TOKEN_HEADERS.length, index, page }} />
               </Row>
