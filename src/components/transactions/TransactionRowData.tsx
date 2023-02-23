@@ -11,7 +11,7 @@ interface ITransactionRowDataProps {
   page: number
 }
 
-export const TransactionRowData: FC<ITransactionRowDataProps> = ({ transaction, index, page }) => {
+export const TransactionRowData: FC<ITransactionRowDataProps> = ({ transaction }) => {
   const accountLength = transaction.account.length
 
   const [formattedTime, setFormattedTime] = useState<string>('')
