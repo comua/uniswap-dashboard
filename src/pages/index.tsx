@@ -1,8 +1,8 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query'
-import { AnimatePresence } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import { FC } from 'react'
 
+import { PageTransitionFM } from '../components/animation/PageTransitionFM'
 import { queryPools } from '../components/data/usePools'
 import { PoolTable } from '../components/pools/PoolTable'
 import { PAGE_SIZE } from '../lib/constants'
@@ -12,14 +12,12 @@ const Home: FC = () => {
   const description = 'All Pools'
 
   return (
-    <AnimatePresence>
-      <div
-        className={`relative flex w-[100svw] flex-col items-center justify-center bg-black px-24 text-white tablet:px-48`}
-      >
-        <NextSeo title={title} description={description} openGraph={{ title, description }} />
-        <PoolTable />
-      </div>
-    </AnimatePresence>
+    <PageTransitionFM
+      className={`absolute flex w-[100svw] flex-col items-center justify-center bg-black px-24 text-white tablet:px-48`}
+    >
+      <NextSeo title={title} description={description} openGraph={{ title, description }} />
+      <PoolTable />
+    </PageTransitionFM>
   )
 }
 

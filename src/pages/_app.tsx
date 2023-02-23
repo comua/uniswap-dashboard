@@ -3,6 +3,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 import { Inter } from '@next/font/google'
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
 
 import { AppReveal } from '../components/AppReveal'
@@ -37,7 +38,13 @@ const App = ({ Component, pageProps, router }: AppProps) => {
           <IsAppReadyProvider>
             <DefaultMeta canonical={url} />
             <Layout>
-              <Component {...pageProps} />
+              <AnimatePresence
+                mode="wait"
+                initial={false}
+                onExitComplete={() => window.scrollTo(0, 0)}
+              >
+                <Component {...pageProps} key={router.asPath} />
+              </AnimatePresence>
             </Layout>
             <AppReveal />
           </IsAppReadyProvider>

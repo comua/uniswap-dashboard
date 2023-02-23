@@ -1,8 +1,8 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query'
-import { AnimatePresence } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import { FC } from 'react'
 
+import { PageTransitionFM } from '../components/animation/PageTransitionFM'
 import { queryTransactions } from '../components/data/useTransactions'
 import { TransactionTable } from '../components/transactions/TransactionTable'
 import { QUERY_SIZE } from '../lib/constants'
@@ -12,14 +12,12 @@ const Transactions: FC = () => {
   const description = 'All Transactions'
 
   return (
-    <AnimatePresence>
-      <div
-        className={`relative flex w-[100svw] flex-col items-center justify-center bg-black px-24 text-white tablet:px-48`}
-      >
-        <NextSeo title={title} description={description} openGraph={{ title, description }} />
-        <TransactionTable />
-      </div>
-    </AnimatePresence>
+    <PageTransitionFM
+      className={`absolute flex w-[100svw] flex-col items-center justify-center bg-black px-24 text-white tablet:px-48`}
+    >
+      <NextSeo title={title} description={description} openGraph={{ title, description }} />
+      <TransactionTable />
+    </PageTransitionFM>
   )
 }
 
