@@ -32,8 +32,8 @@ export const queryTokens = async ({ page = 0, size }: { page?: number; size: num
   )
 
   return response.tokens.map((token) => {
-    const todayPrice = token.tokenDayData[0].priceUSD
-    const yesterdayPrice = token.tokenDayData[1].priceUSD
+    const todayPrice = token.tokenDayData[0]?.priceUSD || 0
+    const yesterdayPrice = token.tokenDayData[1]?.priceUSD || todayPrice
 
     const percentChange = parseInt(yesterdayPrice)
       ? ((todayPrice - yesterdayPrice) / yesterdayPrice) * 100
