@@ -4,7 +4,7 @@ export const COMPACT_NUMBER_FORMATTER = Intl.NumberFormat('en-US', {
 })
 
 export const PAGE_SIZE = 10
-export const QUERY_SIZE = 100
+export const QUERY_SIZE = 500
 
 export const HIDDEN_TOKENS = [
   '0xd46ba6d942050d489dbd938a2c909a5d5039a161',

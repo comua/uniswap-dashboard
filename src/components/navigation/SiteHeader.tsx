@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
+import { GoMarkGithub } from 'react-icons/go'
 import { twMerge } from 'tailwind-merge'
+
+import { UniswapLogoIcon } from '../../icons/UniswapLogoIcon'
 
 const NAV_MAP = [
   { label: 'Pools', path: '/' },
@@ -21,12 +24,15 @@ export const SiteHeader: FC = () => {
 
   return (
     <header
-      className="fixed z-50 flex w-full justify-between
+      className="fixed z-50 flex w-full items-center justify-between
     bg-zinc-900 py-16 px-24 text-14 transition-colors duration-1000 ease-in-out-expo"
     >
-      <div className="">
-        <Link href="/">
-          Uniswap<span className="hidden tablet:inline"> Dashboard</span>
+      <div className="flex items-center">
+        <Link href="/" className="flex items-center">
+          <div className="-mt-4 mr-8">
+            <UniswapLogoIcon />
+          </div>
+          <div className="hidden tablet:inline">Uniswap Dashboard</div>
         </Link>
       </div>
       <div className="">
