@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-export const UnknownCoinIcon = ({ size = 24, className }) => {
+interface IUnknownCoinIconProps {
+  size?: number | string
+  className?: string
+}
+
+export const UnknownCoinIcon: FC<IUnknownCoinIconProps> = ({ size = 24, className }) => {
   return (
     <svg
       width={size}
       height={size}
       viewBox="0 0 24 24"
       fill="none"
+      stroke="black"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"

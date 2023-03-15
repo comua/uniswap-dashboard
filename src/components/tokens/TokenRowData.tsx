@@ -1,5 +1,4 @@
 import { getAddress } from '@ethersproject/address'
-import Image from 'next/image'
 import React, { FC } from 'react'
 
 import { COMPACT_NUMBER_FORMATTER, PAGE_SIZE } from '../../lib/constants'
