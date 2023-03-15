@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { UniswapLogoIcon } from '../../icons/UniswapLogoIcon'
+import { UniswapLogoIcon } from '../icons/UniswapLogoIcon'
 
 const NAV_MAP = [
   { label: 'Pools', path: '/' },

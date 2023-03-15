@@ -5,6 +5,7 @@ import React, { FC } from 'react'
 import { COMPACT_NUMBER_FORMATTER, PAGE_SIZE } from '../../lib/constants'
 import { Token } from '../../lib/types'
 import { Cell } from '../table/Cell'
+import { Icon } from '../table/Icon'
 
 interface ITokenRowDataProps {
   token: Token
@@ -31,13 +32,7 @@ export const TokenRowData: FC<ITokenRowDataProps> = ({ token, index, page }) => 
       <Cell>
         <span className="flex">
           <span className="flex items-center justify-center pr-4">
-            <Image
-              src={tokenImageSrc}
-              alt={token.symbol}
-              width={16}
-              height={16}
-              className="flex h-16 w-16 items-center justify-center rounded-full"
-            />
+            <Icon src={tokenImageSrc} alt={token.symbol} />
           </span>
           <span>
             <span className="tablet:hidden">{token.symbol}</span>

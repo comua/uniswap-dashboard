@@ -1,10 +1,10 @@
 import { getAddress } from '@ethersproject/address'
-import Image from 'next/image'
 import React, { FC } from 'react'
 
 import { COMPACT_NUMBER_FORMATTER, PAGE_SIZE } from '../../lib/constants'
 import { Pool } from '../../lib/types'
 import { Cell } from '../table/Cell'
+import { Icon } from '../table/Icon'
 
 interface IPoolRowData {
   pool: Pool
@@ -28,20 +28,8 @@ export const PoolRowData: FC<IPoolRowData> = ({ pool, index, page }) => {
       <Cell>
         <span className="flex">
           <span className="flex items-center justify-center pr-4">
-            <Image
-              src={token0ImageSrc}
-              alt={pool.token0.symbol}
-              width={16}
-              height={16}
-              className="flex h-16 w-16 items-center justify-center rounded-full"
-            />
-            <Image
-              src={token1ImageSrc}
-              alt={pool.token1.symbol}
-              width={16}
-              height={16}
-              className="flex h-16 w-16 items-center justify-center rounded-full"
-            />
+            <Icon src={token0ImageSrc} alt={pool.token0.symbol} />
+            <Icon src={token1ImageSrc} alt={pool.token1.symbol} />
           </span>
           {pool.name}
         </span>
