@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react'
 
-import { UnknownCoinIcon } from '../icons/UnknownCoinIcon'
+import { GenericCoinIcon } from '../icons/GenericCoinIcon'
 
 export const Icon = ({ src, alt }) => {
   const [imageNotFound, setImageNotFound] = useState(false)
   if (imageNotFound) {
-    return <UnknownCoinIcon size={16} />
+    return <GenericCoinIcon size="1.6rem" />
   }
 
   return (
